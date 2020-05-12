@@ -4,10 +4,13 @@
 
 
 		This is my website
-
-		<div>
-			<h3>{{ posts.title }}</h3>
-
-		</div>
+    {% for post in posts %}
+        <div>
+            <h3>{{ post.title }}</h3>
+            <p><b> - First name:</b>{{ post.first_name }}</p>
+            <p><b> - Last name:</b>{{ post.last_name }}</p>
+            <p> -- {{ post.content }}</p>
+        </div>
+    {% endfor %}
 
 {% endblock %}
