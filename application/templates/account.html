@@ -1,21 +1,20 @@
 {% extends "layout.html" %}
 {% block body_content %}
-       <h1>Register Page</h1>
-    <p>Need an account? Sign up</p>
+<h1>{{ current_user.first_name, current_user.last_name }} </h1>
+   
     <div class='form'>
         <form method='POST' action=''>
             {{ form.hidden_tag() }}
-	    <div class='form_group'>
-	    {{ form.first_name.label }}
+            <div class='form_group'>
+            {{ form.first_name.label }}
             {{ form.first_name }}
             {% if form.first_name.errors %}
                     {% for error in form.first_name.errors %}
                     {{ error }}
                     {% endfor %}
             {% endif %}
-	    </div>
+            </div>
             <br>
-            
             <div class='form_group'>
             {{ form.last_name.label }}
             {{ form.last_name }}
@@ -24,11 +23,10 @@
                     {{ error }}
                     {% endfor %}
             {% endif %}
-	   
-	    </div>
-	    <br>
-	    <div class='form_group'>
-               	{{ form.email.label }}
+            </div>
+            <br>
+            <div class='form_group'>
+                {{ form.email.label }}
                 {{ form.email }}
                 {% if form.email.errors %}
                     <div class='error'>
@@ -38,37 +36,16 @@
                     </div>
                 {% endif %}
             </div>
-            <br>
-	    <div class='form_group'>
-	    {{ form.password.label }}
-	    {{ form.password }}
-	    {% if form.password.errors %}
-               <div class='error'>
-	        {% for error in form.password.errors %}
-		{{ error }}
-		{% endfor %}
-	       </div>
-
-	    {% endif %}
-	    </div>
 	    <br>
 	    <div class='form_group'>
-            {{ form.confirm_password.label }}
-            {{ form.confirm_password }}
-            {% if form.confirm_password.errors %}
-               <div class='error'>
-                {% for error in form.confirm_password.errors %}
-                {{ error }}
-                {% endfor %}
-               </div>
-            {% endif %}
-            </div>
-            <br>
-            <div class='form_group'>
-                {{ form.submit }}
-            </div>
-        </form>
-    </div>
+	        {{form.submit}}
+	    </div>
+	</form>
+
+
+	<form action="{{ url_for('account_delete') }}">
+		<button type="submit">Delete your account</button>
+	</form>
 
 
 {% endblock %}
